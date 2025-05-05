@@ -10,25 +10,25 @@ function main(params) {
     let id =  (new URLSearchParams(params.__ow_query)).get("id");
 
     if (!id) {
-        return {
+        return /* all pets */ {
             statusCode: 200,
             headers: { "Content-Type": "application/json" },
             body: pets 
-          };
+        };
     }
 
     id = parseInt(id);
     const pet = pets.find(obj => obj.id === id);
 
     if (pet) {
-        return {
+        return /* pet */ {
             statusCode: 200,
             headers: { "Content-Type": "application/json" },
             body: pet
         }
     }
 
-    return {
+    return /* 404 */  {
         statusCode: 404,
         headers: { "Content-Type": "application/json" },
         body: {"error": "Not found"}
