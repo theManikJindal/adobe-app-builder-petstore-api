@@ -1,0 +1,31 @@
+application:
+  actions: actions
+  runtimeManifest:
+    packages:
+      pet-store-microservice:
+        actions:
+          createPet:
+            function: actions/store/createPet.js
+            web: 'raw'
+            runtime: nodejs:18
+          getPet:
+            function: actions/store/getPet.js
+            web: 'raw'
+            runtime: nodejs:18
+        apis:
+          pet-store-api:
+            store:
+              pet:
+                createPet:
+                  method: POST
+                  response: http
+                getPet:
+                  method: GET
+                  response: http
+              pet/{id}:
+                getPet:
+                  method: GET
+                  response: http
+              
+          
+
